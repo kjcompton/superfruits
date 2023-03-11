@@ -10,7 +10,11 @@ const methodOverride = require("method-override");
 
 // DATABASE CONNECTION
 // How to connect to the database either via heroku or locally
-
+const MONGODB_URI = process.env.MONGODB_URI
+mongoose.set('strictQuery', true)
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: false,
+})
 
 
 // Mongo error/success
@@ -26,6 +30,7 @@ app.use(methodOverride("_method"));
 app.use(express.static('public'));
 
 // ROUTES - INDUCES
+
 
 //HOME
 app.get('/', (req, res)=>{
